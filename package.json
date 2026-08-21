@@ -1,0 +1,8 @@
+{
+  "name": "gfc",
+  "private": true,
+  "description": "Green Flag Club — static site",
+  "devDependencies": {
+    "wrangler": "^4"
+  }
+}

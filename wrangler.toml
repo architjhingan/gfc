@@ -1,0 +1,25 @@
+# Green Flag Club — static site on Cloudflare Workers Static Assets.
+# There is no Worker script: the [assets] block alone serves ./public.
+# Static asset requests are unmetered, so this stays free.
+#
+# Once gfc.ie is live, add `workers_dev = false` to retire the
+# gfc.architjhingan26.workers.dev URL and leave one canonical address.
+
+name = "gfc"
+compatibility_date = "2026-08-20"
+
+[assets]
+directory = "./public"
+
+[observability]
+enabled = true
+
+# Custom domains. Wrangler creates the DNS records and the TLS certificate
+# on deploy — do not add A/CNAME records for these by hand.
+[[routes]]
+pattern = "gfc.ie"
+custom_domain = true
+
+[[routes]]
+pattern = "www.gfc.ie"
+custom_domain = true

@@ -11,6 +11,7 @@ public/           ← ONLY this folder is deployed to gfc.ie
 home.html         the full one-page site, parked until launch day
 brand/            original logo artwork
 docs/             everything you need to know
+wrangler.toml     tells Cloudflare to serve public/ as a static site
 ```
 
 Anything outside `public/` stays private — it lives in the repo but is never
