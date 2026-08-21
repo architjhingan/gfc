@@ -216,9 +216,9 @@ footer small{font-size:.72rem;color:rgba(249,243,230,.45);letter-spacing:.04em}
 
     <!-- ===================================================================
          EMAIL CAPTURE
-         Works out of the box: with no setup it opens a pre-filled email.
-         To collect addresses silently in your inbox, paste a free Formspree
-         endpoint into FORM_ENDPOINT below — see docs/HOSTING-PLAN.md.
+         Signups go straight to the Kit mailing list, which stores the
+         subscriber and sends the launch email. With FORM_ENDPOINT empty it
+         falls back to opening a pre-filled email instead.
          =================================================================== -->
     <form id="notifyForm" novalidate>
       <div class="row">
@@ -244,12 +244,13 @@ footer small{font-size:.72rem;color:rgba(249,243,230,.45);letter-spacing:.04em}
 
 <script>
 /* =====================================================================
-   FORM_ENDPOINT = ""  ->  opens the visitor's email app, pre-filled.
-                           (Works immediately, zero setup.)
-   FORM_ENDPOINT = "https://formspree.io/f/xxxxxxx"
-                       ->  submits silently and lands in the inbox below.
+   Signups go to the Kit list — form 9828984 on the Green Flag Club
+   account. Kit stores the subscriber, owns the unsubscribe link, and is
+   where the launch email gets written and sent.
+
+   FORM_ENDPOINT = ""  ->  falls back to the visitor's email app.
    ===================================================================== */
-const FORM_ENDPOINT = "";
+const FORM_ENDPOINT = "https://app.kit.com/forms/9828984/subscriptions";
 const TO_EMAIL = "gfcinfoireland@gmail.com";
 
 const form   = document.getElementById('notifyForm');
@@ -284,12 +285,15 @@ form.addEventListener('submit', async (e) => {
   const original = btn.textContent;
   btn.textContent = 'Sending…';
   try {
-    const res = await fetch(FORM_ENDPOINT, {
+    // Kit expects `email_address`, and answers HTTP 200 even when it
+    // rejects the address — so the JSON status is the only real signal.
+    const res  = await fetch(FORM_ENDPOINT, {
       method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: new FormData(form)
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email_address: data.email })
     });
-    if (!res.ok) throw new Error('Bad response');
+    const body = await res.json().catch(() => ({}));
+    if (body.status !== 'success') throw new Error('Rejected');
     form.reset();
     say('You’re on the list — we’ll be in touch when the first batch lands.', 'ok');
   } catch (err) {
