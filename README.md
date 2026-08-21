@@ -3,22 +3,29 @@
 One-page site. No framework, no build step — each `.html` file is self-contained.
 
 ```
-index.html    the "coming soon" holding page — this is what visitors see
-home.html     the full one-page site, ready for launch day
-favicon.svg   the leaf mark for the browser tab
-images/       your matcha photos go here
-docs/         everything you need to know
+public/           ← ONLY this folder is deployed to gfc.ie
+  index.html      the "coming soon" holding page — what visitors see
+  favicon.svg     the leaf mark for the browser tab
+  images/         your matcha photos go here
+
+home.html         the full one-page site, parked until launch day
+brand/            original logo artwork
+docs/             everything you need to know
 ```
 
-**Preview them:** double-click `index.html` (holding page) or `home.html` (full site).
+Anything outside `public/` stays private — it lives in the repo but is never
+published, so the unlaunched site and these notes aren't reachable on the web.
+
+**Preview them:** double-click `public/index.html` (holding page) or
+`home.html` (full site).
 
 ## Going live properly
 
-Right now `gfc.ie` shows the holding page. When you're ready to launch:
+Right now `gfc.ie` serves `public/index.html`, the holding page. When you're ready to launch:
 
 ```
-mv index.html coming-soon.html   # keep it, in case you want it back
-mv home.html index.html          # the full site becomes the front door
+git mv public/index.html coming-soon.html   # park the holding page outside public/
+git mv home.html public/index.html          # the full site becomes the front door
 ```
 
 Both pages share the same brand tokens, fonts and leaf mark, so they look like
