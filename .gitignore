@@ -1,0 +1,13 @@
+# macOS
+.DS_Store
+._*
+
+# editors
+.idea/
+.vscode/
+*.swp
+
+# python (this is a static site — no build step)
+.venv/
+__pycache__/
+*.pyc

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Green Flag Club — Coming Soon</title>
+<meta name="description" content="Green Flag Club — small-batch ceremonial matcha, made in Ireland. Launching soon. Leave your email and we'll tell you the moment it's pouring.">
+
+<!-- Social preview (optional: drop an image at images/share.jpg) -->
+<meta property="og:title" content="Green Flag Club — Coming Soon">
+<meta property="og:description" content="Small-batch ceremonial matcha, made in Ireland. Launching soon.">
+<meta property="og:image" content="images/share.jpg">
+<meta property="og:type" content="website">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   GREEN FLAG CLUB — coming soon
+   Same brand tokens as home.html, so the two pages match.
+   ============================================================ */
+:root{
+  --green:      #5F6B4C;
+  --green-deep: #47513A;
+  --green-dark: #333B29;
+  --sage:       #9BB183;
+  --cream:      #F9F3E6;
+  --lime:       #C7F04A;
+  --lime-deep:  #A5D317;
+
+  --radius-sm: 12px;
+  --ease: cubic-bezier(.2,.7,.2,1);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  background:var(--green);
+  color:var(--cream);
+  font-family:'Jost',system-ui,-apple-system,'Segoe UI',sans-serif;
+  font-weight:300;
+  font-size:clamp(16px,1.02vw + 13px,18px);
+  line-height:1.65;
+  overflow-x:hidden;
+}
+a{color:inherit}
+
+h1{
+  font-family:'Cormorant Garamond',Georgia,serif;
+  font-weight:600;
+  line-height:1.02;
+  letter-spacing:-.01em;
+  margin:0;
+  font-size:clamp(2.9rem,9vw,5.4rem);
+}
+.script{font-style:italic;font-weight:600}
+.hl{color:var(--lime)}
+
+/* ---------- soft brand glow behind everything ---------- */
+body::before,
+body::after{
+  content:"";position:fixed;border-radius:50%;pointer-events:none;z-index:0;
+  filter:blur(90px);opacity:.5;
+}
+body::before{
+  width:46vmax;height:46vmax;top:-16vmax;right:-14vmax;
+  background:radial-gradient(circle,rgba(199,240,74,.34),transparent 68%);
+}
+body::after{
+  width:40vmax;height:40vmax;bottom:-16vmax;left:-14vmax;
+  background:radial-gradient(circle,rgba(155,177,131,.36),transparent 70%);
+}
+
+/* ---------- layout ---------- */
+main{
+  position:relative;z-index:1;
+  flex:1;
+  display:flex;align-items:center;justify-content:center;
+  padding:clamp(2.5rem,7vw,5rem) 6vw;
+}
+.stage{width:min(660px,100%);text-align:center}
+
+/* ---------- brand lockup ---------- */
+.mark{
+  width:clamp(58px,11vw,80px);height:auto;
+  color:var(--lime);
+  margin:0 auto 1.6rem;
+  animation:bob 6.5s var(--ease) infinite;
+}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@media (prefers-reduced-motion:reduce){ .mark{animation:none} }
+
+.brand-name{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,4vw,1.9rem);
+  line-height:1;letter-spacing:.01em;display:block;
+}
+.brand-name .script{font-style:italic;font-weight:400;color:var(--lime)}
+.brand-sub{
+  display:block;font-family:'Jost',sans-serif;font-size:.58rem;font-weight:500;
+  letter-spacing:.5em;text-transform:uppercase;color:rgba(249,243,230,.72);
+  margin-top:.55rem;
+}
+
+.rule{
+  width:56px;height:1.5px;margin:2.2rem auto;border:0;
+  background:linear-gradient(90deg,transparent,rgba(199,240,74,.75),transparent);
+}
+
+.eyebrow{
+  font-family:'Jost',sans-serif;font-weight:500;
+  font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--lime);margin:0 0 1.1rem;
+}
+.lede{
+  margin:1.4rem auto 0;max-width:46ch;
+  color:rgba(249,243,230,.86);font-size:1.02rem;
+}
+
+/* ---------- email capture ---------- */
+form{margin:2.4rem auto 0;max-width:460px}
+.row{display:flex;gap:.6rem}
+input[type=email]{
+  flex:1;min-width:0;
+  font-family:'Jost',sans-serif;font-weight:300;font-size:1rem;
+  padding:.95rem 1.2rem;
+  background:rgba(249,243,230,.1);
+  border:1.5px solid rgba(249,243,230,.32);
+  border-radius:999px;
+  color:var(--cream);
+  transition:border-color .25s,background .25s;
+}
+input[type=email]::placeholder{color:rgba(249,243,230,.5)}
+input[type=email]:focus{
+  outline:none;border-color:var(--lime);background:rgba(249,243,230,.16);
+}
+button{
+  font-family:'Jost',sans-serif;font-weight:500;font-size:.85rem;
+  letter-spacing:.06em;text-transform:uppercase;
+  padding:.95rem 1.7rem;border-radius:999px;border:1.5px solid transparent;
+  background:var(--lime);color:var(--green-dark);cursor:pointer;white-space:nowrap;
+  box-shadow:0 10px 30px rgba(199,240,74,.28);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease);
+}
+button:hover:not(:disabled){transform:translateY(-3px);box-shadow:0 16px 40px rgba(199,240,74,.4)}
+button:disabled{opacity:.6;cursor:default}
+
+.note{
+  margin:.95rem 0 0;font-size:.76rem;letter-spacing:.02em;
+  color:rgba(249,243,230,.55);
+}
+.status{
+  display:none;margin-top:1rem;padding:.85rem 1.1rem;
+  border-radius:var(--radius-sm);font-size:.9rem;text-align:left;
+}
+.status.ok{display:block;background:rgba(199,240,74,.16);border:1px solid rgba(199,240,74,.5);color:var(--cream)}
+.status.err{display:block;background:rgba(255,107,138,.16);border:1px solid rgba(255,107,138,.5);color:var(--cream)}
+
+/* spam trap: humans never fill this in */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+
+/* ---------- footer ---------- */
+footer{
+  position:relative;z-index:1;
+  padding:2rem 6vw 2.6rem;text-align:center;
+}
+.social{
+  list-style:none;display:flex;gap:1.8rem;justify-content:center;
+  margin:0 0 1.1rem;padding:0;
+}
+.social a{
+  font-family:'Jost',sans-serif;font-size:.78rem;font-weight:400;
+  letter-spacing:.16em;text-transform:uppercase;text-decoration:none;
+  color:rgba(249,243,230,.78);padding-bottom:3px;
+  border-bottom:1px solid transparent;transition:color .25s,border-color .25s;
+}
+.social a:hover{color:var(--lime);border-bottom-color:var(--lime)}
+footer small{font-size:.72rem;color:rgba(249,243,230,.45);letter-spacing:.04em}
+
+@media (max-width:460px){
+  .row{flex-direction:column}
+  button{width:100%}
+}
+</style>
+</head>
+<body>
+
+<main>
+  <div class="stage">
+
+    <!-- leaf mark from the logo -->
+    <svg class="mark" viewBox="0 0 100 140" aria-hidden="true">
+      <path d="M50 6C88 40 88 100 50 134 12 100 12 40 50 6Z" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linejoin="round"/>
+      <path d="M50 18V126" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
+      <path d="M27 48 50 64 73 48" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity=".62"/>
+      <path d="M27 72 50 88 73 72" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity=".62"/>
+    </svg>
+
+    <span class="brand-name">Green <span class="script">Flag</span></span>
+    <span class="brand-sub">Club</span>
+
+    <hr class="rule">
+
+    <p class="eyebrow">Small batch · Ireland</p>
+    <h1>Coming <span class="script hl">soon.</span></h1>
+    <p class="lede">
+      Ceremonial-grade matcha, whisked fresh and poured bright. We're getting the
+      first batches ready — leave your email and we'll tell you the moment it's pouring.
+    </p>
+
+    <!-- ===================================================================
+         EMAIL CAPTURE
+         Works out of the box: with no setup it opens a pre-filled email.
+         To collect addresses silently in your inbox, paste a free Formspree
+         endpoint into FORM_ENDPOINT below — see docs/HOSTING-PLAN.md.
+         =================================================================== -->
+    <form id="notifyForm" novalidate>
+      <div class="row">
+        <input id="email" name="email" type="email" autocomplete="email" required
+               placeholder="you@example.com" aria-label="Your email address">
+        <button type="submit" id="submitBtn">Notify me</button>
+      </div>
+      <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="note">One email when we launch. Nothing else, ever.</p>
+      <div class="status" id="formStatus" role="status" aria-live="polite"></div>
+    </form>
+
+  </div>
+</main>
+
+<footer>
+  <ul class="social">
+    <li><a href="https://www.instagram.com/greenflag_club/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+    <li><a href="mailto:gfcinfoireland@gmail.com">Email</a></li>
+  </ul>
+  <small>© <span id="yr">2026</span> Green Flag Club · Ireland · Whisked with care</small>
+</footer>
+
+<script>
+/* =====================================================================
+   FORM_ENDPOINT = ""  ->  opens the visitor's email app, pre-filled.
+                           (Works immediately, zero setup.)
+   FORM_ENDPOINT = "https://formspree.io/f/xxxxxxx"
+                       ->  submits silently and lands in the inbox below.
+   ===================================================================== */
+const FORM_ENDPOINT = "";
+const TO_EMAIL = "gfcinfoireland@gmail.com";
+
+const form   = document.getElementById('notifyForm');
+const status = document.getElementById('formStatus');
+const btn    = document.getElementById('submitBtn');
+
+function say(msg, kind){ status.textContent = msg; status.className = 'status ' + kind; }
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  status.className = 'status';
+
+  const data = Object.fromEntries(new FormData(form).entries());
+  if (data._gotcha) return;                      // bot caught
+
+  if (!/^\S+@\S+\.\S+$/.test(data.email || '')) {
+    say('That email doesn’t look right — mind checking it?', 'err');
+    return;
+  }
+
+  if (!FORM_ENDPOINT) {
+    // No backend configured — hand off to the visitor's mail app.
+    const subject = 'Add me to the Green Flag Club launch list';
+    const body    = 'Please let me know when you launch.\n\nEmail: ' + data.email;
+    window.location.href =
+      'mailto:' + TO_EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    say('Opening your email app… if nothing happens, write to ' + TO_EMAIL, 'ok');
+    return;
+  }
+
+  btn.disabled = true;
+  const original = btn.textContent;
+  btn.textContent = 'Sending…';
+  try {
+    const res = await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    });
+    if (!res.ok) throw new Error('Bad response');
+    form.reset();
+    say('You’re on the list — we’ll be in touch when the first batch lands.', 'ok');
+  } catch (err) {
+    say('Something went wrong. Please email us directly at ' + TO_EMAIL + '.', 'err');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = original;
+  }
+});
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
