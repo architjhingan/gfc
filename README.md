@@ -4,18 +4,17 @@ No framework, no build step. Plain HTML files sharing one stylesheet.
 
 ```
 public/               ← ONLY this folder is published to gfc.ie
-  index.html          the "coming soon" holding page, what visitors see today
-  favicon.svg         the leaf mark for the browser tab
-  images/             product photography (see brand/photography/README.txt)
-
-site/                 the full site, finished but parked until launch day
   index.html          home. Hero photo, the story in brief, the four drinks
   menu.html           The GFC Menu. The four drinks
   story.html          Our Story
   find.html           Find Us. Where we pop up, Instagram
   work.html           Work With Us. Enquiry form
   assets/site.css     every page's styling lives here, once
-  images, favicon.svg symlinks so the pages preview correctly in place
+  favicon.svg         the leaf mark for the browser tab
+  images/             product photography (see brand/photography/README.txt)
+
+coming-soon.html      the old holding page. Kept as a record; it sits outside
+                      public/ so it is not served
 
 brand/                logo artwork, the design mockup, social graphics
   photography/        full-resolution product originals, named to match
@@ -26,37 +25,28 @@ wrangler.toml         tells Cloudflare to serve public/ as a static site
 ```
 
 Anything outside `public/` stays private. It's in the repo but never reachable
-on the web, so the unlaunched site isn't public before you're ready.
+on the web.
 
-**Preview:** double-click `site/index.html` for the full site, or
-`public/index.html` for the holding page that's live now.
+**Preview:** double-click `public/index.html`. Every path is relative, so the
+site works straight off the filesystem exactly as it does on gfc.ie.
 
 ## Editing
 
-Copy lives directly in the HTML. Styling lives in `site/assets/site.css` and is
+Copy lives directly in the HTML. Styling lives in `public/assets/site.css` and is
 shared by all five pages, so a colour or type change happens once.
 
 The header and footer are repeated in each of the five pages. That's the price
 of having no build step: changing a nav link means changing it in five files.
 Search for the link text and you'll find them all.
 
-## Going live
+## Live
 
-```
-git rm site/images site/favicon.svg      # preview-only symlinks
-git mv public/index.html coming-soon.html
-git mv site/assets public/assets
-git mv site/index.html site/menu.html site/story.html site/find.html site/work.html public/
-```
-
-Then commit and push. Cloudflare rebuilds and `gfc.ie` serves the full site.
-
-**Before you do:** the enquiry form on `site/work.html` needs an access key
-before it can send anything. See "The enquiry form" below.
+`gfc.ie` and `www.gfc.ie` serve the five pages from `public/`. Push to `main`
+and Cloudflare rebuilds and deploys in about a minute.
 
 ## The enquiry form
 
-`site/work.html` has a Name / Email / Contact number / Message form. The site is
+`public/work.html` has a Name / Email / Contact number / Message form. The site is
 a folder of static files with no server of ours behind it, so the browser posts
 the enquiry straight to FormSubmit, which emails it on. No account, no API key,
 no cost. The visitor stays on the page and no mail app opens.
@@ -70,12 +60,12 @@ offers a direct email link, rather than losing the message quietly. The reason
 is also logged to the browser console.
 
 To point the form at a different inbox, change `TO_EMAIL` at the bottom of
-`site/work.html`. Activation just runs once more for the new address.
+`public/work.html`. Activation just runs once more for the new address.
 
 ## Layout rules
 
 Two things keep the five pages looking like one site. Both live at the top of
-`site/assets/site.css`:
+`public/assets/site.css`:
 
 - **`--pad`** is the only left/right margin on the site. The header, every
   heading, every photo grid and the footer all start at that same edge. No page
