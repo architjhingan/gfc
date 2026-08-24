@@ -1,9 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140">
-  <rect width="100" height="140" fill="#5F6B4C"/>
-  <g fill="none" stroke="#F9F3E6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M50 12C86 42 86 98 50 128 14 98 14 42 50 12Z"/>
-    <path d="M50 24V120"/>
-    <path d="M29 50 50 65 71 50" opacity=".7"/>
-    <path d="M29 72 50 87 71 72" opacity=".7"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 209">
+  <!-- The leaf traced from the logo artwork in brand/cart.png: a pointed
+       vesica, a stem stopping short of both tips, two pairs of branches
+       rising outward. Nothing behind it, so it sits on whatever colour the
+       browser paints the tab. Ink on a light tab, cream on a dark one.
+       The stroke is a little heavier than the print mark so it still reads
+       at 16 and 24 pixels. -->
+  <style>
+    .l{fill:none;stroke:#22301F;stroke-width:9;stroke-linecap:round}
+    @media (prefers-color-scheme:dark){ .l{stroke:#F9F3E6} }
+  </style>
+  <g class="l">
+    <path d="M50 5A133.45 133.45 0 0 1 50 204A133.45 133.45 0 0 1 50 5Z"
+          stroke-linejoin="miter" stroke-miterlimit="12"/>
+    <path d="M50 34V180"/>
+    <path d="M19 57.5 50 78.5 81 57.5" opacity=".7" stroke-linejoin="round"/>
+    <path d="M11 88 50 110 89 88" opacity=".7" stroke-linejoin="round"/>
   </g>
 </svg>

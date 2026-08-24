@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Green Flag Club — Coming Soon</title>
-<meta name="description" content="Green Flag Club — ceremonial matcha, made in Ireland. Launching soon. Leave your email and we'll tell you the moment it's pouring.">
+<title>Green Flag Club | Coming Soon</title>
+<meta name="description" content="Green Flag Club makes ceremonial matcha in Ireland. Launching soon. Leave your email and we'll tell you the moment it's pouring.">
 
-<!-- Social preview (optional: drop an image at images/share.jpg) -->
-<meta property="og:title" content="Green Flag Club — Coming Soon">
+<!-- Social preview -->
+<meta property="og:title" content="Green Flag Club | Coming Soon">
 <meta property="og:description" content="Ceremonial matcha, made in Ireland. Launching soon.">
 <meta property="og:image" content="images/share.jpg">
 <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
 
 <style>
 /* ============================================================
-   GREEN FLAG CLUB — coming soon
+   GREEN FLAG CLUB coming soon
    Same brand tokens as home.html, so the two pages match.
    ============================================================ */
 :root{
@@ -89,7 +89,7 @@ main{
 
 /* ---------- brand lockup ---------- */
 .mark{
-  width:clamp(58px,11vw,80px);height:auto;
+  width:clamp(36px,7vw,50px);height:auto;
   color:var(--lime);
   margin:0 auto 1.6rem;
   animation:bob 6.5s var(--ease) infinite;
@@ -195,11 +195,13 @@ footer small{font-size:.72rem;color:rgba(249,243,230,.45);letter-spacing:.04em}
   <div class="stage">
 
     <!-- leaf mark from the logo -->
-    <svg class="mark" viewBox="0 0 100 140" aria-hidden="true">
-      <path d="M50 6C88 40 88 100 50 134 12 100 12 40 50 6Z" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linejoin="round"/>
-      <path d="M50 18V126" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/>
-      <path d="M27 48 50 64 73 48" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity=".62"/>
-      <path d="M27 72 50 88 73 72" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" opacity=".62"/>
+    <svg class="mark" viewBox="0 0 100 209" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round">
+        <path d="M50 5A133.45 133.45 0 0 1 50 204A133.45 133.45 0 0 1 50 5Z" stroke-linejoin="miter" stroke-miterlimit="12"/>
+        <path d="M50 34V180"/>
+        <path d="M19 57.5 50 78.5 81 57.5" opacity=".62" stroke-linejoin="round"/>
+        <path d="M11 88 50 110 89 88" opacity=".62" stroke-linejoin="round"/>
+      </g>
     </svg>
 
     <span class="brand-name">Green <span class="script">Flag</span></span>
@@ -211,7 +213,7 @@ footer small{font-size:.72rem;color:rgba(249,243,230,.45);letter-spacing:.04em}
     <h1>Coming <span class="script hl">soon.</span></h1>
     <p class="lede">
       Ceremonial-grade matcha, whisked fresh and poured bright. We're getting the
-      first batches ready — leave your email and we'll tell you the moment it's pouring.
+      first batches ready. Leave your email and we'll tell you the moment it's pouring.
     </p>
 
     <!-- ===================================================================
@@ -237,21 +239,21 @@ footer small{font-size:.72rem;color:rgba(249,243,230,.45);letter-spacing:.04em}
 <footer>
   <ul class="social">
     <li><a href="https://www.instagram.com/greenflag_club/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-    <li><a href="mailto:gfcinfoireland@gmail.com">Email</a></li>
+    <li><a href="mailto:info@gfc.ie">Email</a></li>
   </ul>
   <small>© <span id="yr">2026</span> Green Flag Club · Ireland · Whisked with care</small>
 </footer>
 
 <script>
 /* =====================================================================
-   Signups go to the Kit list — form 9828984 on the Green Flag Club
+   Signups go to the Kit list, form 9828984 on the Green Flag Club
    account. Kit stores the subscriber, owns the unsubscribe link, and is
    where the launch email gets written and sent.
 
    FORM_ENDPOINT = ""  ->  falls back to the visitor's email app.
    ===================================================================== */
 const FORM_ENDPOINT = "https://app.kit.com/forms/9828984/subscriptions";
-const TO_EMAIL = "gfcinfoireland@gmail.com";
+const TO_EMAIL = "info@gfc.ie";
 
 const form   = document.getElementById('notifyForm');
 const status = document.getElementById('formStatus');
@@ -267,12 +269,12 @@ form.addEventListener('submit', async (e) => {
   if (data._gotcha) return;                      // bot caught
 
   if (!/^\S+@\S+\.\S+$/.test(data.email || '')) {
-    say('That email doesn’t look right — mind checking it?', 'err');
+    say('That email doesn’t look right. Mind checking it?', 'err');
     return;
   }
 
   if (!FORM_ENDPOINT) {
-    // No backend configured — hand off to the visitor's mail app.
+    // No backend configured, so hand off to the visitor's mail app.
     const subject = 'Add me to the Green Flag Club launch list';
     const body    = 'Please let me know when you launch.\n\nEmail: ' + data.email;
     window.location.href =
@@ -286,7 +288,7 @@ form.addEventListener('submit', async (e) => {
   btn.textContent = 'Sending…';
   try {
     // Kit expects `email_address`, and answers HTTP 200 even when it
-    // rejects the address — so the JSON status is the only real signal.
+    // rejects the address, so the JSON status is the only real signal.
     const res  = await fetch(FORM_ENDPOINT, {
       method: 'POST',
       headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
@@ -295,7 +297,7 @@ form.addEventListener('submit', async (e) => {
     const body = await res.json().catch(() => ({}));
     if (body.status !== 'success') throw new Error('Rejected');
     form.reset();
-    say('You’re on the list — we’ll be in touch when the first batch lands.', 'ok');
+    say('You’re on the list. We’ll be in touch when the first batch lands.', 'ok');
   } catch (err) {
     say('Something went wrong. Please email us directly at ' + TO_EMAIL + '.', 'err');
   } finally {
