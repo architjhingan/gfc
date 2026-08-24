@@ -6,7 +6,7 @@ No framework, no build step. Plain HTML files sharing one stylesheet.
 public/               ← ONLY this folder is published to gfc.ie
   index.html          the "coming soon" holding page, what visitors see today
   favicon.svg         the leaf mark for the browser tab
-  images/             product photography (see images/README.txt)
+  images/             product photography (see brand/photography/README.txt)
 
 site/                 the full site, finished but parked until launch day
   index.html          home. Hero photo, the story in brief, the four drinks
@@ -19,7 +19,8 @@ site/                 the full site, finished but parked until launch day
 
 brand/                logo artwork, the design mockup, social graphics
   photography/        full-resolution product originals, named to match
-                      the files in public/images/
+                      the files in public/images/, plus README.txt describing
+                      what each served image is and how to regenerate it
 docs/                 hosting, editing and cost notes
 wrangler.toml         tells Cloudflare to serve public/ as a static site
 ```

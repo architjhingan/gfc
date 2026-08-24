@@ -1,4 +1,4 @@
-Images served with the site. Every file here is used, nothing spare.
+can youImages served with the site. Every file here is used, nothing spare.
 
   hero.jpg            1600x900   home page hero. Jasmine tea under a matcha cloud
   lineup.jpg          1672x941   Our Story. All four drinks, runs edge to edge
