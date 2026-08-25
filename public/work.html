@@ -52,56 +52,62 @@
         <div>
           <p class="eyebrow">Work with us</p>
           <h1 class="display sm">Markets, events, collaborations.</h1>
+          <div class="intro-body">
+            <p class="lede">Running a market, opening a studio, planning something that needs very
+              good tea? We'd like to hear about it.</p>
+            <p class="lede">Tell us what you have in mind, where it is and roughly when, and we'll
+              come back to you.</p>
+          </div>
         </div>
-        <div class="intro-body">
-          <p class="lede">Running a market, opening a studio, planning something that needs very
-            good tea? We'd like to hear about it.</p>
-          <p class="lede">Tell us what you have in mind, where it is and roughly when, and we'll
-            come back to you.</p>
-        </div>
+        <figure class="intro-photo">
+          <img src="images/cart.jpg" width="1400" height="1012"
+               alt="The Green Flag Club cart: cream and sage green, with the leaf mark on the front panel and matcha cups lined up on the counter.">
+        </figure>
+
+        <!-- ================================================================
+             ENQUIRY FORM
+             Posts straight to the form service set up in the script at the
+             bottom of this page. The visitor stays here and no mail app
+             opens. It sits inside the intro grid so it lands directly under
+             the copy, beside the cart, rather than below the whole photo.
+             ================================================================ -->
+        <form class="form" id="enquiryForm" novalidate>
+          <div class="field-row">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required
+                     placeholder="Your name">
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required
+                     placeholder="you@example.com">
+            </div>
+          </div>
+  
+          <div class="field">
+            <label for="phone">Contact number <span class="opt">(optional)</span></label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel"
+                   placeholder="+353 …">
+          </div>
+  
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required
+                      placeholder="What you have in mind, where it is and roughly when."></textarea>
+          </div>
+  
+          <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+  
+          <button class="btn" type="submit" id="enquirySubmit">
+            Send enquiry <span aria-hidden="true">&rarr;</span>
+          </button>
+  
+          <p class="form-note">We usually come back within a couple of days. You can also write
+            to <a href="mailto:info@gfc.ie">info@gfc.ie</a>.</p>
+          <div class="form-status" id="enquiryStatus" role="status" aria-live="polite"></div>
+        </form>
       </div>
-
-      <!-- ==================================================================
-           ENQUIRY FORM
-           Posts straight to the form service set up in the script at the
-           bottom of this page. The visitor stays here and no mail app opens.
-           ================================================================== -->
-      <form class="form" id="enquiryForm" novalidate>
-        <div class="field-row">
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" autocomplete="name" required
-                   placeholder="Your name">
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" autocomplete="email" required
-                   placeholder="you@example.com">
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="phone">Contact number <span class="opt">(optional)</span></label>
-          <input id="phone" name="phone" type="tel" autocomplete="tel"
-                 placeholder="+353 …">
-        </div>
-
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" required
-                    placeholder="What you have in mind, where it is and roughly when."></textarea>
-        </div>
-
-        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-        <button class="btn" type="submit" id="enquirySubmit">
-          Send enquiry <span aria-hidden="true">&rarr;</span>
-        </button>
-
-        <p class="form-note">We usually come back within a couple of days. You can also write
-          to <a href="mailto:info@gfc.ie">info@gfc.ie</a>.</p>
-        <div class="form-status" id="enquiryStatus" role="status" aria-live="polite"></div>
-      </form>
     </div>
   </section>
 

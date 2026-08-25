@@ -206,6 +206,16 @@ nav a[aria-current="page"]{color:var(--ink);border-bottom:1px solid var(--ink);p
 .intro>*{min-width:0}
 .intro-body>:last-child{margin-bottom:0}
 .intro-body .btn{margin-top:1.4rem}
+/* when the copy sits under the heading instead of in its own column,
+   give it the breathing room the column gap used to provide */
+.intro .display+.intro-body{margin-top:1.5rem}
+/* a photo taking the second column, e.g. the cart on the work page. It
+   holds that column for every row of the grid, so anything after it (the
+   enquiry form) lands under the copy rather than below the photo. */
+.intro-photo{margin:0;grid-row:span 2}
+.intro-photo img{width:100%}
+/* inside the grid the row gap already provides the air above the form */
+.intro .form{margin-top:0}
 
 /* A photo running edge to edge. It sits outside .wrap, so it is already the
    full width of the page. The height cap stops it swallowing the screen on a
